@@ -89,11 +89,57 @@ void printField(char field[][SIZE], bool cheat)
 		}
 	}
 }
-
+bool shooted(int x, int y, char field[][SIZE])
+{
+	if (x < 0 || x >= SIZE || y < 0 || y >= SIZE || field[x][y] == 0) return false;
+	field[x][y] = abs(field[x][y]);
+	return true;
+}
+void printInstruction()
+{
+	cout << "Choose an option: " << endl;
+	cout << "S - shoot" << endl;
+	cout << "C - cheat" << endl;
+	cout << "Q - end" << endl;
+}
+void printGameScreen(char field[][SIZE])
+{
+	printInstruction();
+	printField(field, false);
+}
+void shooting(char field[][SIZE])
+{
+	int x, y;
+	cin >> x >> y;
+	if (shooted(x, y, field)) cout << "\n Hit! \n";
+	else cout << "\n Miss! \n";
+}
+void cheating(char field[][SIZE])
+{
+	printField(field, true);
+	cout << endl;
+}
+void gameController(char field[][SIZE])
+{
+	char option;
+	while(true)
+	{
+		printGameScreen(field);
+		cin >> option;
+		switch (option)
+		{
+		case 'S': shooting(field); break;
+		case 'C': cheating(field); break;
+		case 'Q': return;
+		defaut: cout << "Invalid option\n";
+		}
+	}
+}
 int main(int argc, char* argv[])
 {
 	srand(time(NULL));
 	//Declaration od the game field
 	char field[SIZE][SIZE];
+	gameController(field);
 	return 0;
 }

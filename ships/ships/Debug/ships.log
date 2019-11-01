@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\agnie\source\repos\ships\ships\ships\main.cpp(137): warning C4102: "defaut": etykieta, do której nie istnieje odwołanie
+c:\users\agnie\source\repos\ships\ships\ships\main.cpp(143): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  ships.vcxproj -> C:\Users\agnie\source\repos\ships\ships\Debug\ships.exe

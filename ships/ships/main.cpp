@@ -56,6 +56,7 @@ void placeShipsOnField(char field[][SIZE])
 				x = rand() % SIZE;
 				y = rand() % SIZE;
 			} while (!checkPosition(field, ship_size, direction, x, y));
+			placeShip(field, ship_size, direction, x, y);
 		}
 	}
 }
@@ -84,10 +85,12 @@ void printField(char field[][SIZE], bool cheat)
 		for (int j = 0; j < SIZE; j++)
 		{
 			if (field[i][j] > 0) cout << (char)(field[i][j] + '0') << " ";
-			else if (cheat && field[i][j] < 0) cout << (char)(-1 * field[i][j] + '0') << " ";
+			else if (cheat && field[i][j] < 0) cout << (char)((-1) * field[i][j] + '0') << " ";
 			else cout << "  ";
 		}
+		cout << " | " << i << endl;
 	}
+	printFooter();
 }
 bool shooted(int x, int y, char field[][SIZE])
 {
@@ -140,6 +143,8 @@ int main(int argc, char* argv[])
 	srand(time(NULL));
 	//Declaration od the game field
 	char field[SIZE][SIZE];
+	fillField(field);
+	placeShipsOnField(field);
 	gameController(field);
 	return 0;
 }
